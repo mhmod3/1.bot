@@ -96,8 +96,7 @@ bot.command('sub', (ctx) => {
 bot.command('vid', (ctx) => {
   ctx.session = ctx.session || {};
   ctx.session.step = 'waiting_video_url';
-  ctx.reply('الخطوات: 1. اذهب الى Nyaa او اي موقع اخر \n2. حمل ملف التورنيت وليس ان تجلب رابط Magnet\n3. قم بإرسال ملف التورنيت الى هذه البوت @filetolink4gbHG1bot\n4
- سيعطيك البوت رابطاً خذ هذه الرابط وارسله لي\n\n❌ للإلغاء أرسل 0.');
+  ctx.reply('📥 أرسل رابط مباشر للفيديو.\n\n❌ للإلغاء أرسل 0.');
 });
 
 bot.command('dvid', (ctx) => {
@@ -142,7 +141,7 @@ bot.on('text', async (ctx) => {
       const token = ctx.session.currentToken || DEFAULT_API_TOKEN;
       try {
         const res = await axios.post(
-          'https://upnshare.com/api/v1/video/advance-upload',
+          'https://rpmshare.com/api/v1/video/advance-upload',
           { url: text, name: 'Uploaded from bot' },
           { headers: { 'api-token': token, 'Content-Type': 'application/json' } }
         );
@@ -157,7 +156,7 @@ bot.on('text', async (ctx) => {
       const token = ctx.session.currentToken || DEFAULT_API_TOKEN;
       try {
         const res = await axios.delete(
-          `https://upnshare.com/api/v1/video/advance-upload/${encodeURIComponent(text)}`,
+          `https://rpmshare.com/api/v1/video/advance-upload/${encodeURIComponent(text)}`,
           { headers: { 'api-token': token, 'accept': '*/*' } }
         );
         if (res.status === 204) ctx.reply(`✅ تم حذف المهمة: ${text}`);
@@ -240,7 +239,7 @@ function cleanup(...paths) {
 }
 
 async function uploadSubtitle(id, filePath, fileName, token) {
-  const url = `https://upnshare.com/api/v1/video/manage/${id}/subtitle`;
+  const url = `https://rpmshare.com/api/v1/video/manage/${id}/subtitle`;
   const form = new FormData();
   form.append('language', 'ar');
   form.append('name', fileName);
