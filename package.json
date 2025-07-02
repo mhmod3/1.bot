@@ -4,7 +4,7 @@
   "description": "بوت تيليجرام لإدارة الترجمات ورفع الفيديوهات باستخدام Telegraf وWebhook على Render",
   "main": "bot.js",
   "scripts": {
-    "start": "node bot.js"
+    "start": "node index.js"
   },
   "keywords": [
     "telegraf",
